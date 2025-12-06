@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+    <link rel="icon" href="icon.png" type="image/xicon" />
+
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Reorganizer • By Umesh J</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- PDF-LIB -->
+    <script src="https://cdn.jsdelivr.net/npm/pdf-lib/dist/pdf-lib.min.js"></script>
+
+    <!-- CONFETTI -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+
+<div class="wrapper">
+
+    <h1 class="title">PDF Page Reorganizer</h1>
+    <p class="subtitle">BY Umesh</p>
+
+    <div class="glass-card">
+
+        <label class="label">Select Mode</label>
+        <select id="modeSelect" class="input fancy-select">
+            <option value="6page">6-Page Sheet Pattern</option>
+            <option value="9page">9-Page Sheet Pattern</option>
+        </select>
+
+        <label class="label">Upload PDF</label>
+        <input type="file" id="pdfFile" class="input" accept="application/pdf">
+
+        <button class="btn" onclick="reorganizePDF()">Reorganize PDF</button>
+
+
+
+
+<button class="btn-secondary" onclick="window.location.href='9page.html'">
+    Convert (Multiple Page On Sheet)
+</button>
+
+
+
+
+
+
+    </div>
+
+</div>
+
+<!-- SUCCESS POPUP -->
+<div id="successPopup" class="popup">
+    <h3>🎉 PDF Ready!</h3>
+    <p>Your rearranged PDF has been downloaded successfully.</p>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
