@@ -212,26 +212,7 @@ async function processPDF() {
 
 let lastPdfBlobUrl = null;
 
-async function reorganizePDF() {
-    const fileInput = document.getElementById("pdfFile");
-    if (!fileInput.files.length) {
-        alert("Please upload a PDF first.");
-        return;
-    }
 
-    const file = fileInput.files[0];
-
-    // Show progress bar
-    document.getElementById("progressBox").style.display = "block";
-    animateProgress();
-
-    try {
-        const result = await processPDF(file); // your existing PDF processing
-        showSuccessPopup(result);
-    } catch (err) {
-        alert("Error: " + err.message);
-    }
-}
 
 function animateProgress() {
     const bar = document.getElementById("progressBar");
@@ -267,4 +248,5 @@ function showSuccessPopup(pdfBlobUrl) {
         document.getElementById("progressBox").style.display = "none";
     }, 600);
 }
+
 
