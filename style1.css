@@ -1,6 +1,31 @@
-/* ------------------------------
-   GLOBAL
------------------------------- */
+/* ============================================================
+   GLOBAL DEFAULTS
+   Advanced UI — Dark Gradient + Premium Glassmorphism
+   ============================================================ */
+
+:root {
+  --bg-1: #080c16;
+  --bg-2: #0d1222;
+  --glass: rgba(255, 255, 255, 0.07);
+  --glass-heavy: rgba(255, 255, 255, 0.12);
+  --border-light: rgba(255, 255, 255, 0.18);
+  --border-heavy: rgba(255, 255, 255, 0.25);
+
+  --neon-blue: #546dff;
+  --neon-blue-light: #7686ff;
+  --neon-purple: #7e4dff;
+
+  --shadow-1: 0 8px 20px rgba(0, 0, 0, 0.35);
+  --shadow-2: 0 12px 35px rgba(0, 0, 0, 0.55);
+  --shadow-glow: 0 0 12px rgba(90, 110, 255, 0.45);
+
+  --radius: 14px;
+  --radius-large: 18px;
+
+  --transition-1: 0.25s ease;
+  --transition-2: 0.45s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -9,105 +34,253 @@
 }
 
 body {
-  background: linear-gradient(135deg, #0f1523, #0a0f1b 60%, #080c17);
   min-height: 100vh;
-
+  background: radial-gradient(circle at top, var(--bg-2), var(--bg-1) 55%);
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px;
-
+  padding: 40px;
   color: white;
+  animation: fadeIn 1.2s ease;
 }
 
-/* ------------------------------
-   CONTAINER
------------------------------- */
+/* Fade-in animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================================================
+   MAIN CONTAINER (Desktop First)
+   ============================================================ */
+
 .container {
-  background: rgba(255, 255, 255, 0.06);
-  padding: 32px 40px;
-  width: 420px;
-  border-radius: 14px;
-  text-align: center;
+  width: 430px;
+  padding: 40px 45px;
+  background: var(--glass);
+  backdrop-filter: blur(18px) saturate(150%);
+  border-radius: var(--radius);
+  border: 1px solid var(--border-light);
 
-  box-shadow: 0 10px 30px rgba(0,0,0,0.38);
-  backdrop-filter: blur(12px);
+  box-shadow: var(--shadow-1);
+  transition: var(--transition-2);
+  text-align: center;
+  position: relative;
 }
+
+/* Glowing border on hover */
+.container:hover {
+  border-color: var(--neon-blue-light);
+  box-shadow: var(--shadow-glow), var(--shadow-1);
+}
+
+/* ============================================================
+   HEADINGS
+   ============================================================ */
 
 h3 {
   font-size: 1.9rem;
-  margin-bottom: 25px;
+  margin-bottom: 28px;
   font-weight: 700;
+  letter-spacing: 0.5px;
+  text-shadow: 0 0 4px rgba(255, 255, 255, 0.25);
 }
 
-/* ------------------------------
-   INPUT + SELECT + BUTTON
------------------------------- */
+/* Small glowing underline */
+h3::after {
+  content: "";
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple));
+  display: block;
+  margin: 10px auto 0;
+  border-radius: 20px;
+  box-shadow: var(--shadow-glow);
+}
+
+/* ============================================================
+   INPUT FIELDS + SELECT BOX
+   ============================================================ */
+
 input[type="file"],
 select {
   width: 100%;
-  background: rgba(255,255,255,0.1);
-  border: 1px solid rgba(255,255,255,0.18);
+  background: var(--glass-heavy);
+  border: 1px solid var(--border-light);
   padding: 14px 12px;
-  margin: 15px 0 20px;
-  border-radius: 10px;
+  border-radius: var(--radius);
+  margin: 12px 0 25px;
   color: #e8e8e8;
   font-size: 1rem;
+  transition: var(--transition-1);
 }
 
+/* Hover highlight */
+input[type="file"]:hover,
+select:hover {
+  border-color: var(--neon-blue-light);
+  box-shadow: var(--shadow-glow);
+}
+
+/* File upload button inside input */
 input[type="file"]::-webkit-file-upload-button {
-  background: #4160ff;
+  background: var(--neon-blue);
   color: white;
   border: none;
-  padding: 10px 18px;
+  padding: 10px 16px;
   border-radius: 8px;
+  margin-right: 12px;
   cursor: pointer;
+  transition: var(--transition-1);
 }
+
+input[type="file"]::-webkit-file-upload-button:hover {
+  background: var(--neon-blue-light);
+}
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
 
 button {
   width: 100%;
-  padding: 15px;
-  background: #4c5cff;
-  border: none;
-  border-radius: 10px;
+  padding: 16px;
+  background: var(--neon-blue);
+  color: white;
   font-size: 1.05rem;
   font-weight: 600;
+  border: none;
+  border-radius: var(--radius-large);
   cursor: pointer;
-  color: white;
-  transition: 0.25s;
+
+  transition: var(--transition-2);
+  box-shadow: var(--shadow-1);
 }
 
 button:hover {
-  background: #384aff;
-  transform: translateY(-1px);
+  background: var(--neon-blue-light);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-2), var(--shadow-glow);
 }
 
-/* ------------------------------
-     MOBILE IMPROVEMENTS
------------------------------- */
-@media (max-width: 600px) {
+/* Button press animation */
+button:active {
+  transform: translateY(1px);
+  box-shadow: var(--shadow-1);
+}
+
+/* ============================================================
+   RESPONSIVE DESIGN — MOBILE FIRST BREAKPOINT
+   Entirely different layout and scaling
+   ============================================================ */
+
+@media (max-width: 650px) {
+
   body {
-    padding-top: 70px;          /* move container upward */
-    align-items: flex-start;    /* prevent being stuck at bottom */
+    padding: 0;
+    align-items: flex-start;
+    padding-top: 70px; /* move UI upward */
   }
 
   .container {
     width: 92%;
-    padding: 28px 22px;
+    padding: 32px 22px;
+    border-radius: 18px;
+
+    background: rgba(255, 255, 255, 0.11);
+    backdrop-filter: blur(22px) saturate(180%);
+
+    box-shadow: var(--shadow-2);
   }
 
   h3 {
-    font-size: 1.55rem;
+    font-size: 1.65rem;
+    letter-spacing: 0.3px;
   }
 
   input[type="file"],
   select {
-    padding: 16px;
-    font-size: 1.05rem;
+    padding: 18px;
+    font-size: 1.1rem;
+    border-radius: 12px;
   }
 
   button {
+    padding: 18px;
+    font-size: 1.15rem;
+    border-radius: 14px;
+  }
+}
+
+/* ============================================================
+   EXTRA SMALL MOBILE (Under 400px)
+   ============================================================ */
+
+@media (max-width: 400px) {
+
+  .container {
+    width: 94%;
+    padding: 28px 18px;
+    margin-top: 20px;
+  }
+
+  h3 {
+    font-size: 1.45rem;
+  }
+
+  input[type="file"],
+  select {
+    font-size: 1rem;
     padding: 16px;
+  }
+
+  button {
     font-size: 1.08rem;
+    padding: 16px;
+  }
+}
+
+/* ============================================================
+   TABLET MODE (700–1100px)
+   Wider Card, More Spacing
+   ============================================================ */
+
+@media (min-width: 700px) and (max-width: 1100px) {
+
+  .container {
+    width: 520px;
+    padding: 50px 60px;
+    border-radius: 20px;
+  }
+
+  h3 {
+    font-size: 2rem;
+  }
+
+  input[type="file"],
+  select {
+    padding: 18px 14px;
+    font-size: 1.12rem;
+  }
+
+  button {
+    padding: 18px;
+    font-size: 1.15rem;
+  }
+}
+
+/* ============================================================
+   LARGE DESKTOP (1440px+)
+   ============================================================ */
+
+@media (min-width: 1440px) {
+  .container {
+    width: 480px;
+    padding: 55px 60px;
+    transform: scale(1.1);
+  }
+
+  h3 {
+    font-size: 2.2rem;
   }
 }
