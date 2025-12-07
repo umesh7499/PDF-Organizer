@@ -22,7 +22,37 @@
 <body>
 
 
+<div class="popup-container" id="successPopup">
+    <div class="popup-box">
+        <h2>🎉 PDF Downloaded Successfully!</h2>
+        <p>Your file has been saved. Thank you for using our tool!</p>
+        <button class="close-btn" onclick="closePopup()">OK</button>
+    </div>
 
+    <!-- Confetti -->
+    <div class="confetti"></div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
  <div class="container">
    
 
@@ -148,7 +178,29 @@
       a.remove();
       URL.revokeObjectURL(url);
     }
+
+
+
+
+
+
+function showPopup() {
+    document.getElementById("successPopup").style.display = "flex";
+}
+
+function closePopup() {
+    document.getElementById("successPopup").style.display = "none";
+}
+
+
+
+
+
+
+
+    
   </script>
 </body>
 </html>
+
 
