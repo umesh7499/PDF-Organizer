@@ -149,3 +149,97 @@ button:active {
     from { opacity: 0; transform: translateY(15px); }
     to { opacity: 1; transform: translateY(0); }
 }
+
+
+
+
+
+
+
+/* Popup Background */
+.popup-container {
+    display: none; /* keep hidden initially */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(3px);
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.4s ease;
+    z-index: 9999;
+}
+
+/* Popup Box */
+.popup-box {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 15px;
+    width: 350px;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+    animation: popupScale 0.4s ease;
+}
+
+.popup-box h2 {
+    margin: 0;
+    font-size: 22px;
+    color: #2c3e50;
+}
+
+.popup-box p {
+    color: #444;
+    margin-top: 10px;
+}
+
+/* Button */
+.close-btn {
+    margin-top: 20px;
+    padding: 10px 25px;
+    background: #3498db;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.close-btn:hover {
+    background: #2980b9;
+}
+
+/* Fade animation */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes popupScale {
+    0% { transform: scale(0.7); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* Confetti Animation */
+.confetti {
+    position: absolute;
+    top: -10px;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background:
+        radial-gradient(circle, #ff4757 6px, transparent 7px),
+        radial-gradient(circle, #1e90ff 6px, transparent 7px),
+        radial-gradient(circle, #2ed573 6px, transparent 7px),
+        radial-gradient(circle, #ffa502 6px, transparent 7px);
+    background-size: 20px 20px;
+    animation: confettiFall 1.5s linear infinite;
+}
+
+@keyframes confettiFall {
+    from { background-position: 0 -200px; }
+    to { background-position: 0 300px; }
+}
+
