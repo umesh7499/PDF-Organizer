@@ -143,7 +143,7 @@ document.addEventListener('contextmenu', function(e) {
 
     // Create message element
     let msg = document.createElement('div');
-    msg.textContent = 'Right click is disabled';
+    msg.textContent = 'Accha Lavde !!!';
     msg.style.position = 'fixed';
     msg.style.top = e.clientY + 'px';
     msg.style.left = e.clientX + 'px';
@@ -168,4 +168,5 @@ document.addEventListener('contextmenu', function(e) {
       }, 1000);
     }, 1500);
   });
+
 
