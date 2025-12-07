@@ -150,7 +150,13 @@
 
       const a = document.createElement('a');
       a.href = url;
-      a.download = 'n-up-' + layout + '.pdf';
+
+      
+   const inputName = file.name.replace(/\.pdf$/i, '');
+a.download = inputName + '-CONVERTED.pdf';
+
+      
+      
       document.body.appendChild(a);
       a.click();
       a.remove();
@@ -204,6 +210,7 @@ document.addEventListener('contextmenu', function(e) {
   </script>
 </body>
 </html>
+
 
 
 
