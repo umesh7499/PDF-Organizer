@@ -1,42 +1,94 @@
 /* ------------------------------
    GLOBAL THEME
 ------------------------------ */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
-
 body {
     margin: 0;
-    padding: 0;
+    padding: 20px 12px;           /* add side padding on mobile */
     font-family: "Poppins", sans-serif;
     background: linear-gradient(135deg, #0d1224, #10182f);
-    height: 100vh;
+    min-height: 100vh;            /* allow taller than viewport */
     display: flex;
     justify-content: center;
     align-items: center;
     color: #fff;
 }
 
-/* ------------------------------
-   CONTAINER (Glass Card)
------------------------------- */
+/* Glass card container */
 .container {
     background: rgba(255, 255, 255, 0.05);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
     backdrop-filter: blur(12px);
     border-radius: 18px;
-    padding: 35px 45px;
-    max-width: 420px;
+    padding: 24px 18px;           /* slightly smaller padding for mobile */
+    width: 100%;                  /* full width */
+    max-width: 420px;             /* cap on large screens */
     text-align: center;
     animation: fadeIn 0.8s ease;
 }
 
-/* Heading */
+/* Make typography responsive */
 h3 {
     color: #ffffff;
-    font-size: 28px;
-    margin-bottom: 15px;
+    font-size: 22px;
+    margin-bottom: 12px;
     font-weight: 600;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
 }
+
+/* Inputs and buttons already use width: 100%; keep them */
+select,
+input[type="file"] {
+    width: 100%;
+    margin-top: 12px;
+    padding: 11px;
+    border-radius: 12px;
+    border: none;
+    outline: none;
+    background: rgba(255, 255, 255, 0.08);
+    color: white;
+    font-size: 14px;
+}
+
+/* Main button */
+button {
+    width: 100%;
+    margin-top: 20px;
+    padding: 13px;
+    border-radius: 12px;
+    border: none;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    background: #5864ff;
+    color: white;
+    box-shadow: 0 6px 15px rgba(88, 100, 255, 0.35);
+}
+
+/* Optional: tweak layout only on very small screens */
+@media (max-width: 480px) {
+    body {
+        align-items: flex-start;   /* card starts near top */
+    }
+    .container {
+        margin-top: 30px;
+        padding: 20px 14px;
+        border-radius: 16px;
+    }
+    h3 {
+        font-size: 20px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
 
 /* ------------------------------
    SELECT + FILE INPUT
@@ -242,5 +294,6 @@ button:active {
     from { background-position: 0 -200px; }
     to { background-position: 0 300px; }
 }
+
 
 
