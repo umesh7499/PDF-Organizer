@@ -129,3 +129,15 @@ async function reorganizePDF() {
 
     showSuccessPopup();
 }
+
+
+
+
+
+
+
+
+
+document.addEventListener('contextmenu', function(e) {
+  e.preventDefault();
+});
