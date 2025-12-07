@@ -1,286 +1,264 @@
-/* ============================================================
-   GLOBAL DEFAULTS
-   Advanced UI — Dark Gradient + Premium Glassmorphism
-   ============================================================ */
-
-:root {
-  --bg-1: #080c16;
-  --bg-2: #0d1222;
-  --glass: rgba(255, 255, 255, 0.07);
-  --glass-heavy: rgba(255, 255, 255, 0.12);
-  --border-light: rgba(255, 255, 255, 0.18);
-  --border-heavy: rgba(255, 255, 255, 0.25);
-
-  --neon-blue: #546dff;
-  --neon-blue-light: #7686ff;
-  --neon-purple: #7e4dff;
-
-  --shadow-1: 0 8px 20px rgba(0, 0, 0, 0.35);
-  --shadow-2: 0 12px 35px rgba(0, 0, 0, 0.55);
-  --shadow-glow: 0 0 12px rgba(90, 110, 255, 0.45);
-
-  --radius: 14px;
-  --radius-large: 18px;
-
-  --transition-1: 0.25s ease;
-  --transition-2: 0.45s cubic-bezier(0.18, 0.89, 0.32, 1.28);
-}
+/* =========================================================
+   GLOBAL RESET
+   ========================================================= */
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Inter", sans-serif;
+  font-family: "Poppins", sans-serif;
 }
+
+html, body {
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+  background: #0f1624;
+}
+
+/* =========================================================
+   BACKGROUND GRADIENT
+   ========================================================= */
 
 body {
-  min-height: 100vh;
-  background: radial-gradient(circle at top, var(--bg-2), var(--bg-1) 55%);
+  background: linear-gradient(180deg, #0b0f1a, #111827, #0b1220);
+  color: #fff;
   display: flex;
   justify-content: center;
-  align-items: center;
-  padding: 40px;
-  color: white;
-  animation: fadeIn 1.2s ease;
+  align-items: flex-start;
+  padding-top: 60px;
 }
 
-/* Fade-in animation */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-/* ============================================================
-   MAIN CONTAINER (Desktop First)
-   ============================================================ */
+/* =========================================================
+   CONTAINER CARD
+   ========================================================= */
 
 .container {
-  width: 430px;
-  padding: 40px 45px;
-  background: var(--glass);
-  backdrop-filter: blur(18px) saturate(150%);
-  border-radius: var(--radius);
-  border: 1px solid var(--border-light);
-
-  box-shadow: var(--shadow-1);
-  transition: var(--transition-2);
+  width: 90%;
+  max-width: 430px;
+  padding: 30px 25px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.35);
   text-align: center;
+  animation: fadeIn 0.9s ease-in-out;
+}
+
+/* Fade Animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* =========================================================
+   PAGE TITLE
+   ========================================================= */
+
+.container h3 {
+  font-size: 26px;
+  margin-bottom: 25px;
+  color: #e5e7eb;
+  letter-spacing: 1px;
+  font-weight: 600;
+  text-shadow: 0px 0px 5px rgba(255,255,255,0.1);
+}
+
+/* =========================================================
+   FILE UPLOAD BOX
+   ========================================================= */
+
+#pdfInput {
+  width: 100%;
+  padding: 14px;
+  background: rgba(255,255,255,0.09);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 10px;
+  color: #fff;
+  font-size: 15px;
+  outline: none;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+#pdfInput:hover {
+  background: rgba(255,255,255,0.13);
+}
+
+/* =========================================================
+   SELECT DROPDOWN STYLING
+   ========================================================= */
+
+#layout {
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 22px;
+  background: rgba(255,255,255,0.08);
+  color: #fff;
+  font-size: 15px;
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 10px;
+  outline: none;
+  cursor: pointer;
+}
+
+#layout option {
+  background: #1f2937;
+  color: white;
+}
+
+/* =========================================================
+   BUTTON DESIGN
+   ========================================================= */
+
+#processBtn {
+  width: 100%;
+  padding: 15px;
+  background: #4f46e5;
+  color: #fff;
+  font-size: 16px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s ease;
+  box-shadow: 0px 4px 14px rgba(79,70,229,0.4);
+}
+
+#processBtn:hover {
+  background: #615afa;
+  box-shadow: 0px 6px 18px rgba(99,102,241,0.5);
+  transform: translateY(-2px);
+}
+
+#processBtn:active {
+  transform: scale(0.98);
+}
+
+/* =========================================================
+   RESPONSIVE DESIGN
+   ========================================================= */
+
+@media (max-width: 768px) {
+  .container {
+    width: 92%;
+    max-width: 380px;
+    padding: 25px 20px;
+  }
+
+  .container h3 {
+    font-size: 22px;
+  }
+
+  #pdfInput, #layout, #processBtn {
+    font-size: 14px;
+    padding: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding-top: 40px;
+  }
+
+  .container {
+    max-width: 360px;
+    padding: 24px 18px;
+  }
+
+  .container h3 {
+    font-size: 20px;
+  }
+}
+
+/* =========================================================
+   CUSTOM SCROLLBAR
+   ========================================================= */
+
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0d1220;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #444c66;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #5b6788;
+}
+
+/* =========================================================
+   BUTTON GLOW ANIMATION (extra design)
+   ========================================================= */
+
+#processBtn.glow {
+  box-shadow: 0 0 15px #6366f1, 0 0 30px #4f46e5;
+}
+
+/* =========================================================
+   INPUT FOCUS EFFECT
+   ========================================================= */
+
+#pdfInput:focus,
+#layout:focus {
+  border-color: #6366f1;
+  box-shadow: 0 0 8px rgba(99,102,241,0.4);
+}
+
+/* =========================================================
+   SPACING FIXES
+   ========================================================= */
+
+.container > * {
+  display: block;
+}
+
+/* =========================================================
+   GLASS BORDER EXTRA
+   ========================================================= */
+
+.container {
   position: relative;
 }
 
-/* Glowing border on hover */
-.container:hover {
-  border-color: var(--neon-blue-light);
-  box-shadow: var(--shadow-glow), var(--shadow-1);
-}
-
-/* ============================================================
-   HEADINGS
-   ============================================================ */
-
-h3 {
-  font-size: 1.9rem;
-  margin-bottom: 28px;
-  font-weight: 700;
-  letter-spacing: 0.5px;
-  text-shadow: 0 0 4px rgba(255, 255, 255, 0.25);
-}
-
-/* Small glowing underline */
-h3::after {
+.container::before {
   content: "";
-  width: 60px;
-  height: 3px;
-  background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple));
-  display: block;
-  margin: 10px auto 0;
+  position: absolute;
+  inset: 0;
   border-radius: 20px;
-  box-shadow: var(--shadow-glow);
+  padding: 2px;
+  background: linear-gradient(145deg, rgba(255,255,255,0.25), rgba(255,255,255,0.05));
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  pointer-events: none;
 }
 
-/* ============================================================
-   INPUT FIELDS + SELECT BOX
-   ============================================================ */
+/* =========================================================
+   SOFT HOVER TILT (optional)
+   ========================================================= */
 
-input[type="file"],
-select {
-  width: 100%;
-  background: var(--glass-heavy);
-  border: 1px solid var(--border-light);
-  padding: 14px 12px;
-  border-radius: var(--radius);
-  margin: 12px 0 25px;
-  color: #e8e8e8;
-  font-size: 1rem;
-  transition: var(--transition-1);
+.container:hover {
+  transform: perspective(700px) translateZ(8px);
+  transition: 0.5s ease;
 }
 
-/* Hover highlight */
-input[type="file"]:hover,
-select:hover {
-  border-color: var(--neon-blue-light);
-  box-shadow: var(--shadow-glow);
+/* =========================================================
+   Smooth Transitions
+   ========================================================= */
+
+input, select, button {
+  transition: all 0.25s ease;
 }
 
-/* File upload button inside input */
-input[type="file"]::-webkit-file-upload-button {
-  background: var(--neon-blue);
-  color: white;
-  border: none;
-  padding: 10px 16px;
-  border-radius: 8px;
-  margin-right: 12px;
-  cursor: pointer;
-  transition: var(--transition-1);
-}
-
-input[type="file"]::-webkit-file-upload-button:hover {
-  background: var(--neon-blue-light);
-}
-
-/* ============================================================
-   BUTTONS
-   ============================================================ */
-
-button {
-  width: 100%;
-  padding: 16px;
-  background: var(--neon-blue);
-  color: white;
-  font-size: 1.05rem;
-  font-weight: 600;
-  border: none;
-  border-radius: var(--radius-large);
-  cursor: pointer;
-
-  transition: var(--transition-2);
-  box-shadow: var(--shadow-1);
-}
-
-button:hover {
-  background: var(--neon-blue-light);
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-2), var(--shadow-glow);
-}
-
-/* Button press animation */
-button:active {
-  transform: translateY(1px);
-  box-shadow: var(--shadow-1);
-}
-
-/* ============================================================
-   RESPONSIVE DESIGN — MOBILE FIRST BREAKPOINT
-   Entirely different layout and scaling
-   ============================================================ */
-
-@media (max-width: 650px) {
-
-  body {
-    padding: 0;
-    align-items: flex-start;
-    padding-top: 70px; /* move UI upward */
-  }
-
-  .container {
-    width: 92%;
-    padding: 32px 22px;
-    border-radius: 18px;
-
-    background: rgba(255, 255, 255, 0.11);
-    backdrop-filter: blur(22px) saturate(180%);
-
-    box-shadow: var(--shadow-2);
-  }
-
-  h3 {
-    font-size: 1.65rem;
-    letter-spacing: 0.3px;
-  }
-
-  input[type="file"],
-  select {
-    padding: 18px;
-    font-size: 1.1rem;
-    border-radius: 12px;
-  }
-
-  button {
-    padding: 18px;
-    font-size: 1.15rem;
-    border-radius: 14px;
-  }
-}
-
-/* ============================================================
-   EXTRA SMALL MOBILE (Under 400px)
-   ============================================================ */
-
-@media (max-width: 400px) {
-
-  .container {
-    width: 94%;
-    padding: 28px 18px;
-    margin-top: 20px;
-  }
-
-  h3 {
-    font-size: 1.45rem;
-  }
-
-  input[type="file"],
-  select {
-    font-size: 1rem;
-    padding: 16px;
-  }
-
-  button {
-    font-size: 1.08rem;
-    padding: 16px;
-  }
-}
-
-/* ============================================================
-   TABLET MODE (700–1100px)
-   Wider Card, More Spacing
-   ============================================================ */
-
-@media (min-width: 700px) and (max-width: 1100px) {
-
-  .container {
-    width: 520px;
-    padding: 50px 60px;
-    border-radius: 20px;
-  }
-
-  h3 {
-    font-size: 2rem;
-  }
-
-  input[type="file"],
-  select {
-    padding: 18px 14px;
-    font-size: 1.12rem;
-  }
-
-  button {
-    padding: 18px;
-    font-size: 1.15rem;
-  }
-}
-
-/* ============================================================
-   LARGE DESKTOP (1440px+)
-   ============================================================ */
-
-@media (min-width: 1440px) {
-  .container {
-    width: 480px;
-    padding: 55px 60px;
-    transform: scale(1.1);
-  }
-
-  h3 {
-    font-size: 2.2rem;
-  }
-}
+/* =========================================================
+   End of CSS
+   ========================================================= */
