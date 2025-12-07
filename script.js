@@ -187,7 +187,28 @@ document.addEventListener('contextmenu', function(e) {
 
 
 
+async function processPDF() {
+    try {
+        const fileInput = document.getElementById("pdfFile");
+        if (!fileInput.files.length) {
+            alert("Please upload a PDF first!");
+            return;
+        }
 
+        const file = fileInput.files[0];
+        const arrayBuffer = await file.arrayBuffer();
+
+        const pdfDoc = await PDFLib.PDFDocument.load(arrayBuffer);
+        const totalPages = pdfDoc.getPageCount();
+
+        alert("PDF Loaded Successfully! Total Pages: " + totalPages);
+
+        // TODO: Add your 3x3 / 3x2 imposition logic here
+
+    } catch (error) {
+        alert("Error: " + error.message);
+    }
+}
 
 let lastPdfBlobUrl = null;
 
@@ -246,3 +267,4 @@ function showSuccessPopup(pdfBlobUrl) {
         document.getElementById("progressBox").style.display = "none";
     }, 600);
 }
+
