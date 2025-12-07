@@ -4,42 +4,61 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
 
 body {
-    margin: 0;
-    padding: 0;
-    font-family: "Poppins", sans-serif;
-    background: linear-gradient(135deg, #0d1224, #10182f);
-    min-height: 100vh; /* changed from height */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #fff;
-    padding: 20px; /* add some padding for mobile */
-    box-sizing: border-box;
+  margin: 0;
+  padding: 20px 15px; /* padding for mobile */
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #0d1224, #10182f);
+  min-height: 100vh; /* change from height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  box-sizing: border-box;
+  flex-direction: column; /* ensure stacking for small screens */
 }
 
-/* ------------------------------
-   CONTAINER (Glass Card)
------------------------------- */
 .container {
-    background: rgba(255, 255, 255, 0.05);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
-    backdrop-filter: blur(12px);
-    border-radius: 18px;
-    padding: 35px 45px;
-    width: 100%;      /* changed from fixed width */
-    max-width: 420px; /* max width on large screens */
-    text-align: center;
-    animation: fadeIn 0.8s ease;
-    box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(12px);
+  border-radius: 18px;
+  padding: 35px 45px;
+  width: 100%;
+  max-width: 420px;
+  text-align: center;
+  animation: fadeIn 0.8s ease;
+  box-sizing: border-box;
+  margin-top: 40px; /* add some vertical margin */
+  margin-bottom: 40px;
 }
 
-/* Heading */
-h3 {
-    color: #ffffff;
-    font-size: 28px;
-    margin-bottom: 15px;
-    font-weight: 600;
-    letter-spacing: 1px;
+/* Media query for mobile screens */
+@media only screen and (max-width: 480px) {
+  body {
+    padding: 20px 10px;
+    min-height: auto; /* allow flexible height */
+    align-items: flex-start; /* align top instead of center */
+  }
+  .container {
+    padding: 25px 20px;
+    max-width: 100%;
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 12px;
+  }
+  h3 {
+    font-size: 22px;
+  }
+  select,
+  input[type="file"] {
+    font-size: 13px;
+    padding: 10px;
+  }
+  button {
+    font-size: 14px;
+    padding: 12px;
+  }
 }
 
 /* ------------------------------
@@ -234,3 +253,4 @@ button:active {
         max-width: 90%;
     }
 }
+
