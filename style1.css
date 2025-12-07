@@ -243,3 +243,48 @@ button:active {
     to { background-position: 0 300px; }
 }
 
+
+/* ------------------------------
+   MOBILE RESPONSIVENESS FIX
+------------------------------ */
+@media (max-width: 480px) {
+
+    /* Main Card */
+    .container {
+        width: 90%;
+        padding: 25px 20px;
+    }
+
+    /* Popup */
+    .popup-box {
+        width: 85% !important;
+        padding: 25px !important;
+    }
+
+    .popup-box h2 {
+        font-size: 20px;
+    }
+
+    .popup-box p {
+        font-size: 14px;
+    }
+
+    .close-btn {
+        width: 100%;
+        padding: 12px;
+        font-size: 15px;
+    }
+
+    /* Ensure dropdown and file input scale well */
+    select,
+    input[type="file"] {
+        font-size: 13px;
+        padding: 10px;
+    }
+
+    /* Button */
+    button {
+        padding: 12px;
+        font-size: 14px;
+    }
+}
