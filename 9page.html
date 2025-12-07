@@ -22,15 +22,7 @@
 <body>
 
 
-<!-- Popup -->
-<div id="downloadPopup" style="display:none;">
-    <div id="popupBox">
-        <h2>🎉 PDF Downloaded!</h2>
-        <p>Your file is ready. Click below to open.</p>
-        <button id="openPdfBtn">Open PDF</button>
-        <button id="closePopupBtn">Close</button>
-    </div>
-</div>
+
 
 
 
@@ -172,9 +164,6 @@
 
 
 
-lastDownloadedURL = url;   // store for popup open button
-showDownloadPopup();       // show celebration popup
-
 
       
 
@@ -192,32 +181,6 @@ showDownloadPopup();       // show celebration popup
 
 
 
-let lastDownloadedURL = null;
-
-// Show popup
-function showDownloadPopup() {
-    const popup = document.getElementById("downloadPopup");
-    popup.style.display = "flex";
-
-    // Confetti celebration
-    confetti({
-        particleCount: 200,
-        spread: 80,
-        origin: { y: 0.6 }
-    });
-
-    // Open PDF button
-    if (lastDownloadedURL) {
-        document.getElementById("openPdfBtn").onclick = () => {
-            window.open(lastDownloadedURL, "_blank");
-        };
-    }
-
-    // Close popup
-    document.getElementById("closePopupBtn").onclick = () => {
-        popup.style.display = "none";
-    };
-}
 
 
 
@@ -230,6 +193,7 @@ function showDownloadPopup() {
   </script>
 </body>
 </html>
+
 
 
 
