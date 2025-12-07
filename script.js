@@ -139,5 +139,33 @@ async function reorganizePDF() {
 
 
 document.addEventListener('contextmenu', function(e) {
-  e.preventDefault();
-});
+    e.preventDefault();
+
+    // Create message element
+    let msg = document.createElement('div');
+    msg.textContent = 'Right click is disabled';
+    msg.style.position = 'fixed';
+    msg.style.top = e.clientY + 'px';
+    msg.style.left = e.clientX + 'px';
+    msg.style.backgroundColor = 'rgba(0,0,0,0.75)';
+    msg.style.color = 'white';
+    msg.style.padding = '4px 8px';
+    msg.style.borderRadius = '4px';
+    msg.style.fontSize = '12px';
+    msg.style.pointerEvents = 'none';
+    msg.style.zIndex = 9999;
+    msg.style.userSelect = 'none';
+    msg.style.transition = 'opacity 1s ease-out';
+    msg.style.opacity = '1';
+
+    document.body.appendChild(msg);
+
+    // Fade out and remove after 1.5 seconds
+    setTimeout(() => {
+      msg.style.opacity = '0';
+      setTimeout(() => {
+        msg.remove();
+      }, 1000);
+    }, 1500);
+  });
+
