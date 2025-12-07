@@ -170,3 +170,79 @@ document.addEventListener('contextmenu', function(e) {
   });
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+let lastPdfBlobUrl = null;
+
+async function reorganizePDF() {
+    const fileInput = document.getElementById("pdfFile");
+    if (!fileInput.files.length) {
+        alert("Please upload a PDF first.");
+        return;
+    }
+
+    const file = fileInput.files[0];
+
+    // Show progress bar
+    document.getElementById("progressBox").style.display = "block";
+    animateProgress();
+
+    try {
+        const result = await processPDF(file); // your existing PDF processing
+        showSuccessPopup(result);
+    } catch (err) {
+        alert("Error: " + err.message);
+    }
+}
+
+function animateProgress() {
+    const bar = document.getElementById("progressBar");
+    let width = 0;
+    bar.style.width = "0%";
+
+    let interval = setInterval(() => {
+        if (width >= 90) {
+            clearInterval(interval);
+        } else {
+            width += 3;
+            bar.style.width = width + "%";
+        }
+    }, 100);
+}
+
+function showSuccessPopup(pdfBlobUrl) {
+    // Complete progress
+    document.getElementById("progressBar").style.width = "100%";
+
+    lastPdfBlobUrl = pdfBlobUrl;
+
+    // Show popup
+    const popup = document.getElementById("successPopup");
+    popup.classList.add("show");
+
+    document.getElementById("openPdfBtn").onclick = () => {
+        window.open(lastPdfBlobUrl, "_blank");
+    };
+
+    // Hide progress bar
+    setTimeout(() => {
+        document.getElementById("progressBox").style.display = "none";
+    }, 600);
+}
