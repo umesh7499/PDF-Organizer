@@ -1,246 +1,107 @@
 /* ------------------------------
-   GLOBAL THEME
+   GLOBAL BACKGROUND + FONTS
 ------------------------------ */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
 
 body {
-    margin: 0;
-    padding: 0;
-    font-family: "Poppins", sans-serif;
-    background: linear-gradient(135deg, #0d1224, #10182f);
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #fff;
+  background: linear-gradient(135deg, #0f1523, #0a0f1b 60%, #080c17);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  color: white;
 }
 
 /* ------------------------------
-   CONTAINER (Glass Card)
+   MAIN CONTAINER (Card)
 ------------------------------ */
 .container {
-    background: rgba(255, 255, 255, 0.05);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
-    backdrop-filter: blur(12px);
-    border-radius: 18px;
-    padding: 35px 45px;
-    width: 420px;
-    text-align: center;
-    animation: fadeIn 0.8s ease;
+  background: rgba(255, 255, 255, 0.06);
+  padding: 30px 35px;
+  width: 420px;
+  border-radius: 14px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.35);
+  backdrop-filter: blur(10px);
+  text-align: center;
 }
 
-/* Heading */
+/* Title */
 h3 {
-    color: #ffffff;
-    font-size: 28px;
-    margin-bottom: 15px;
-    font-weight: 600;
-    letter-spacing: 1px;
+  font-size: 1.9rem;
+  margin-bottom: 25px;
+  font-weight: 700;
+  text-shadow: 0 0 3px rgba(255,255,255,0.15);
 }
 
 /* ------------------------------
-   SELECT + FILE INPUT
+   INPUTS + SELECT + BUTTONS
 ------------------------------ */
-select,
-input[type="file"] {
-    width: 100%;
-    margin-top: 15px;
-    padding: 12px;
-    border-radius: 12px;
-    border: none;
-    outline: none;
-    background: rgba(255, 255, 255, 0.08);
-    color: white;
-    font-size: 14px;
-    transition: 0.3s;
-}
-
-select:hover,
-input[type="file"]:hover {
-    background: rgba(255, 255, 255, 0.15);
+input[type="file"],
+select {
+  width: 100%;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.18);
+  padding: 12px 10px;
+  margin: 12px 0 18px;
+  border-radius: 8px;
+  color: #e3e3e3;
+  font-size: 0.95rem;
+  cursor: pointer;
 }
 
 input[type="file"]::-webkit-file-upload-button {
-    background: #5864ff;
-    color: white;
-    border: none;
-    padding: 8px 14px;
-    border-radius: 10px;
-    cursor: pointer;
-    margin-right: 10px;
-    transition: 0.3s;
+  background: #3e55ff;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-right: 10px;
 }
 
-input[type="file"]::-webkit-file-upload-button:hover {
-    background: #4450e6;
-}
-
-
-
-
-
-
-
-
-/* Force dark dropdown background */
-select {
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    background-color: rgba(255, 255, 255, 0.1) !important;
-    color: #fff !important;
-    border: 1px solid rgba(255, 255, 255, 0.15);
-}
-
-/* Dropdown list styling */
-select option {
-    background-color: #1a2036 !important;
-    color: #ffffff !important;
-    padding: 10px;
-}
-
-/* Highlighted option */
-select option:checked,
-select option:hover {
-    background-color: #5864ff !important;
-    color: #fff !important;
-}
-
-
-
-
-
-
-
-
-
-/* ------------------------------
-   BUTTON
------------------------------- */
 button {
-    width: 100%;
-    margin-top: 25px;
-    padding: 14px;
-    border-radius: 12px;
-    border: none;
-    font-size: 15px;
-    font-weight: 600;
-    cursor: pointer;
-    background: #5864ff;
-    color: white;
-    box-shadow: 0 6px 15px rgba(88, 100, 255, 0.35);
-    transition: 0.25s ease;
+  width: 100%;
+  padding: 14px;
+  margin-top: 5px;
+  background: #4c5cff;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  color: white;
+  transition: 0.25s;
 }
 
 button:hover {
-    transform: translateY(-3px);
-    background: #4450e6;
-    box-shadow: 0 8px 18px rgba(88, 100, 255, 0.45);
-}
-
-button:active {
-    transform: scale(0.98);
+  background: #3a4aff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.25);
 }
 
 /* ------------------------------
-   ANIMATION
+      RESPONSIVE (Mobile)
 ------------------------------ */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(15px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-
-
-
-
-
-
-/* Popup Background */
-.popup-container {
-    display: none; /* keep hidden initially */
-    position: fixed;
-    top: 0;
-    left: 0;
+@media (max-width: 550px) {
+  .container {
     width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(3px);
-    justify-content: center;
-    align-items: center;
-    animation: fadeIn 0.4s ease;
-    z-index: 9999;
+    max-width: 360px;
+    padding: 25px;
+  }
+
+  h3 {
+    font-size: 1.6rem;
+    margin-bottom: 18px;
+  }
+
+  button {
+    font-size: 0.95rem;
+    padding: 12px;
+  }
 }
-
-/* Popup Box */
-.popup-box {
-    background: #ffffff;
-    padding: 30px;
-    border-radius: 15px;
-    width: 350px;
-    text-align: center;
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
-    animation: popupScale 0.4s ease;
-}
-
-.popup-box h2 {
-    margin: 0;
-    font-size: 22px;
-    color: #2c3e50;
-}
-
-.popup-box p {
-    color: #444;
-    margin-top: 10px;
-}
-
-/* Button */
-.close-btn {
-    margin-top: 20px;
-    padding: 10px 25px;
-    background: #3498db;
-    border: none;
-    border-radius: 8px;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-    transition: 0.2s;
-}
-
-.close-btn:hover {
-    background: #2980b9;
-}
-
-/* Fade animation */
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-@keyframes popupScale {
-    0% { transform: scale(0.7); opacity: 0; }
-    100% { transform: scale(1); opacity: 1; }
-}
-
-/* Confetti Animation */
-.confetti {
-    position: absolute;
-    top: -10px;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    background:
-        radial-gradient(circle, #ff4757 6px, transparent 7px),
-        radial-gradient(circle, #1e90ff 6px, transparent 7px),
-        radial-gradient(circle, #2ed573 6px, transparent 7px),
-        radial-gradient(circle, #ffa502 6px, transparent 7px);
-    background-size: 20px 20px;
-    animation: confettiFall 1.5s linear infinite;
-}
-
-@keyframes confettiFall {
-    from { background-position: 0 -200px; }
-    to { background-position: 0 300px; }
-}
-
-
