@@ -1,17 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="UTF-8" />
+  <title>PDF N‑Up (3×2 / 3×3)</title>
 
 
-<link rel="icon" href="icon.png" type="image/xicon" />
+<link rel="stylesheet" href="style1.css">
 
 
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Print Multiple Pages on One Sheet</title>
-<script src="https://cdn.jsdelivr.net/npm/pdf-lib/dist/pdf-lib.min.js"></script>
-<style>
-  /* Paste your entire provided CSS theme here */
 
 
 
@@ -21,469 +17,137 @@
 
 
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
-}
 
-body {
-    background: linear-gradient(135deg, #0a0f24, #1c2341);
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-}
-
-.wrapper {
-    text-align: center;
-    width: 100%;
-    max-width: 450px;
-}
-
-.title {
-    color: #fff;
-    font-size: 32px;
-    margin-bottom: 5px;
-    font-weight: 600;
-}
-
-.subtitle {
-    color: #a8b3ff;
-    margin-bottom: 25px;
-}
-
-.glass-card {
-    background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(12px);
-    padding: 25px;
-    border-radius: 18px;
-    box-shadow: 0 0 15px rgba(0,0,0,0.35);
-}
-
-.label {
-    color: #e3e8ff;
-    font-size: 14px;
-    display: block;
-    margin-top: 12px;
-    text-align: left;
-}
-
-.input {
-    width: 100%;
-    padding: 12px;
-    background: rgba(255, 255, 255, 0.12);
-    border: none;
-    outline: none;
-    border-radius: 10px;
-    margin-top: 5px;
-    color: white;
-}
-
-.input::file-selector-button {
-    background: #4752f5;
-    padding: 8px 15px;
-    border: none;
-    border-radius: 7px;
-    color: white;
-}
-
-.btn {
-    width: 100%;
-    margin-top: 18px;
-    padding: 14px;
-    background: #5865f2;
-    border: none;
-    border-radius: 12px;
-    color: white;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: 0.2s;
-}
-
-.btn:hover {
-    background: #4752f5;
-    transform: translateY(-2px);
-}
-
-/* SUCCESS POPUP */
-.popup {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: white;
-    padding: 25px 35px;
-    border-radius: 15px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.4);
-    text-align: center;
-    display: none;
-    z-index: 9999;
-    animation: popIn 0.4s ease;
-}
-
-@keyframes popIn {
-    from { transform: scale(0.7) translate(-50%, -50%); opacity: 0; }
-    to { transform: scale(1) translate(-50%, -50%); opacity: 1; }
-}
-
-.popup h3 {
-    margin-bottom: 6px;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.input {
-    width: 100%;
-    padding: 12px;
-    background: rgba(255, 255, 255, 0.12);
-    border: none;
-    outline: none;
-    border-radius: 10px;
-    margin-top: 5px;
-    color: white;
-    cursor: pointer;
-}
-
-/* Add this right below your .input styles */
-
-.input option {
-    background-color: #1c2341; /* solid dark background for options */
-    color: #a8b3ff;            /* light text color */
-}
-
-.input option:hover,
-.input option:checked {
-    background-color: #5865f2; /* highlight color */
-    color: white;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.btn-secondary {
-    width: 100%;
-    margin-top: 12px;
-    padding: 12px;
-    background: rgba(255,255,255,0.18);
-    border: 1px solid rgba(255,255,255,0.25);
-    border-radius: 12px;
-    color: white;
-    font-size: 15px;
-    cursor: pointer;
-    transition: 0.25s;
-}
-
-.btn-secondary:hover {
-    background: rgba(255,255,255,0.28);
-    transform: translateY(-2px);
-}
-
-
-
-
-
-
-
-
-
-
-
-.fancy-select option {
-    background: rgba(255,255,255,0.95);
-    color: #000;
-    padding: 10px;
-    border: 0;
-}
-
-.fancy-select option:checked,
-.fancy-select option:hover {
-    background: #e2e6ff;
-    color: #000;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
-  }
-
-  body {
-    background: linear-gradient(135deg, #0a0f24, #1c2341);
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-  }
-
-  .wrapper {
-    text-align: center;
-    width: 100%;
-    max-width: 450px;
-  }
-
-  .title {
-    color: #fff;
-    font-size: 32px;
-    margin-bottom: 5px;
-    font-weight: 600;
-  }
-
-  .subtitle {
-    color: #a8b3ff;
-    margin-bottom: 25px;
-  }
-
-  .glass-card {
-    background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(12px);
-    padding: 25px;
-    border-radius: 18px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.35);
-  }
-
-  .label {
-    color: #e3e8ff;
-    font-size: 14px;
-    display: block;
-    margin-top: 12px;
-    text-align: left;
-  }
-
-  .input {
-    width: 100%;
-    padding: 12px;
-    background: rgba(255, 255, 255, 0.12);
-    border: none;
-    outline: none;
-    border-radius: 10px;
-    margin-top: 5px;
-    color: white;
-    cursor: pointer;
-  }
-
-  .input::file-selector-button {
-    background: #4752f5;
-    padding: 8px 15px;
-    border: none;
-    border-radius: 7px;
-    color: white;
-  }
-
-  .btn {
-    width: 100%;
-    margin-top: 18px;
-    padding: 14px;
-    background: #5865f2;
-    border: none;
-    border-radius: 12px;
-    color: white;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: 0.2s;
-  }
-
-  .btn:hover {
-    background: #4752f5;
-    transform: translateY(-2px);
-  }
-
-  /* Footer */
-  footer {
-    margin-top: 40px;
-    color: #a8b3ff;
-    font-style: italic;
-    user-select: none;
-    font-size: 14px;
-  }
-</style>
 </head>
 <body>
 
-<div class="wrapper">
-  <h1 class="title">Print Multiple Pages on One Sheet</h1>
-  <p class="subtitle">Select your layout and upload PDFs </p>
 
-  <div class="glass-card">
-    <label for="layoutSelect" class="label">Select Layout:</label>
-    <select id="layoutSelect" class="input">
-      <option value="3x2-landscape">3x2 Landscape (wide)</option>
-      <option value="3x3-portrait">3x3 Portrait (tall)</option>
-    </select>
 
-    <label for="fileInput" class="label">Upload PDF Files:</label>
-    <input type="file" id="fileInput" class="input" multiple accept="application/pdf, image/*" />
+ <div class="container">
+   
 
-    <button id="generateBtn" class="btn">Generate PDF</button>
-  </div>
 
-  <footer>Created by Umesh J</footer>
-</div>
 
-<script>
-  async function loadPDFs(files) {
-    const pdfDocs = [];
-    for (const file of files) {
-      const arrayBuffer = await file.arrayBuffer();
-      if (file.type === "application/pdf") {
-        const pdf = await PDFLib.PDFDocument.load(arrayBuffer);
-        pdfDocs.push(pdf);
-      } else if (file.type.startsWith("image/")) {
-        const imgBytes = new Uint8Array(arrayBuffer);
-        const pdf = await PDFLib.PDFDocument.create();
-        let embeddedImage;
-        try {
-          embeddedImage = await pdf.embedJpg(imgBytes);
-        } catch {
-          embeddedImage = await pdf.embedPng(imgBytes);
+
+  <h3>6/9 Pages on Sheet</h3>
+
+  <input type="file" id="pdfInput" accept="application/pdf" />
+  <select id="layout">
+    <option value="3x2">6 Pages (Landscape)</option>
+    <option value="3x3">9 Pages (Portrait)</option>
+  </select>
+  <button id="processBtn">Process & Download</button>
+
+  <!-- pdf-lib from CDN -->
+  <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+
+  <script>
+    const input = document.getElementById('pdfInput');
+    const layoutSelect = document.getElementById('layout');
+    const btn = document.getElementById('processBtn');
+
+    btn.addEventListener('click', () => {
+      if (!input.files || !input.files[0]) {
+        alert('Select a PDF first.');
+        return;
+      }
+      processPDF(input.files[0], layoutSelect.value)
+        .catch(err => {
+          console.error(err);
+          alert('Error: ' + err.message);
+        });
+    });
+
+    async function processPDF(file, layout) {
+      const arrayBuf = await file.arrayBuffer();
+
+      // Load original PDF and create output PDF
+      const srcPdf = await PDFLib.PDFDocument.load(arrayBuf);   // [web:20]
+      const outPdf = await PDFLib.PDFDocument.create();         // [web:27]
+
+      // A4 size (points) – 595×842 portrait
+      const is32 = layout === '3x2';
+      const pageWidth  = is32 ? 842 : 595;  // landscape vs portrait
+      const pageHeight = is32 ? 595 : 842;
+
+      const cols = 3;
+      const rows = is32 ? 2 : 3;
+
+      const margin = 20;
+      const gap = 10;
+
+      const cellW = (pageWidth  - margin * 2 - gap * (cols - 1)) / cols;
+      const cellH = (pageHeight - margin * 2 - gap * (rows - 1)) / rows;
+
+      const pageCount = srcPdf.getPageCount();
+
+      // For 3×2 layout, rotate logical positions 7–12 by 180°
+      // (counting left->right, top->bottom across all sheets)
+      const rotatePositions = new Set([7, 8, 9, 10, 11, 12]);
+
+      let sheetIndex = 0;
+      for (let base = 0; base < pageCount; base += rows * cols, sheetIndex++) {
+        const sheet = outPdf.addPage([pageWidth, pageHeight]);
+
+        for (let r = 0; r < rows; r++) {
+          for (let c = 0; c < cols; c++) {
+            const idx = base + r * cols + c;
+            if (idx >= pageCount) continue;
+
+            // Embed original page into the new PDF
+            const [embedded] = await outPdf.embedPdf(arrayBuf, [idx]);  // [web:20]
+
+            const pw = embedded.width;
+            const ph = embedded.height;
+
+            const scale = Math.min(cellW / pw, cellH / ph);
+            const drawW = pw * scale;
+            const drawH = ph * scale;
+
+            const cellX = margin + c * (cellW + gap);
+            const cellY = pageHeight - margin - (r + 1) * cellH - r * gap;
+
+            // center inside cell
+            const x = cellX + (cellW - drawW) / 2;
+            const y = cellY + (cellH - drawH) / 2;
+
+            // 1‑based logical position over all sheets
+            const pos = sheetIndex * (rows * cols) + (r * cols + c + 1);
+
+            if (is32 && rotatePositions.has(pos)) {
+              // Keep same rectangle but rotate 180° around lower-left:
+              // shift origin by width+height, then rotate.
+              sheet.drawPage(embedded, {
+                x: x + drawW,
+                y: y + drawH,
+                width: drawW,
+                height: drawH,
+                rotate: PDFLib.degrees(180)   // [web:27]
+              });
+            } else {
+              sheet.drawPage(embedded, {
+                x,
+                y,
+                width: drawW,
+                height: drawH
+              });
+            }
+          }
         }
-        const page = pdf.addPage([embeddedImage.width + 20, embeddedImage.height + 20]);
-        page.drawImage(embeddedImage, {
-          x: 10,
-          y: 10,
-          width: embeddedImage.width,
-          height: embeddedImage.height,
-        });
-        pdfDocs.push(pdf);
       }
+
+      const outBytes = await outPdf.save();
+      const blob = new Blob([outBytes], { type: 'application/pdf' });
+      const url = URL.createObjectURL(blob);
+
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'n-up-' + layout + '.pdf';
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
     }
-    return pdfDocs;
-  }
-
-  document.getElementById('generateBtn').addEventListener('click', async () => {
-    const files = document.getElementById('fileInput').files;
-    if (files.length === 0) {
-      alert('Please upload at least one PDF or image.');
-      return;
-    }
-
-    const layout = document.getElementById('layoutSelect').value;
-
-    let cols, rows, sheetSize;
-
-    if (layout === '3x2-landscape') {
-      cols = 3;
-      rows = 2;
-      sheetSize = [842, 595];
-    } else if (layout === '3x3-portrait') {
-      cols = 3;
-      rows = 3;
-      sheetSize = [595, 842];
-    }
-
-    const pdfDocs = await loadPDFs(files);
-    const allPages = [];
-    for (const pdf of pdfDocs) {
-      const pages = await pdf.getPages();
-      allPages.push(...pages);
-    }
-
-    const newPdf = await PDFLib.PDFDocument.create();
-
-    const pagesPerSheet = cols * rows;
-
-    for (let i = 0; i < allPages.length; i += pagesPerSheet) {
-      const sheetPage = await newPdf.addPage(sheetSize);
-      const width = sheetSize[0];
-      const height = sheetSize[1];
-
-      for (let j = 0; j < pagesPerSheet; j++) {
-        const pageIndex = i + j;
-        if (pageIndex >= allPages.length) break;
-
-        const srcPage = allPages[pageIndex];
-        const embeddedPage = await newPdf.embedPage(srcPage);
-
-        const colIdx = j % cols;
-        const rowIdx = Math.floor(j / cols);
-
-        const cellWidth = width / cols;
-        const cellHeight = height / rows;
-
-        const x = colIdx * cellWidth;
-        const y = height - (rowIdx + 1) * cellHeight;
-
-        const scaleX = cellWidth / embeddedPage.width;
-        const scaleY = cellHeight / embeddedPage.height;
-        const scale = Math.min(scaleX, scaleY);
-
-        const offsetX = x + (cellWidth - embeddedPage.width * scale) / 2;
-        const offsetY = y + (cellHeight - embeddedPage.height * scale) / 2;
-
-        sheetPage.drawPage(embeddedPage, {
-          x: offsetX,
-          y: offsetY,
-          xScale: scale,
-          yScale: scale,
-        });
-      }
-    }
-
-    const pdfBytes = await newPdf.save();
-    const blob = new Blob([pdfBytes], { type: 'application/pdf' });
-    const url = URL.createObjectURL(blob);
-    window.open(url, '_blank');
-  });
-</script>
-
+  </script>
 </body>
 </html>
