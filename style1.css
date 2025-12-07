@@ -8,11 +8,13 @@ body {
     padding: 0;
     font-family: "Poppins", sans-serif;
     background: linear-gradient(135deg, #0d1224, #10182f);
-    height: 100vh;
+    min-height: 100vh; /* changed from height */
     display: flex;
     justify-content: center;
     align-items: center;
     color: #fff;
+    padding: 20px; /* add some padding for mobile */
+    box-sizing: border-box;
 }
 
 /* ------------------------------
@@ -24,9 +26,11 @@ body {
     backdrop-filter: blur(12px);
     border-radius: 18px;
     padding: 35px 45px;
-    width: 420px;
+    width: 100%;      /* changed from fixed width */
+    max-width: 420px; /* max width on large screens */
     text-align: center;
     animation: fadeIn 0.8s ease;
+    box-sizing: border-box;
 }
 
 /* Heading */
@@ -53,6 +57,7 @@ input[type="file"] {
     color: white;
     font-size: 14px;
     transition: 0.3s;
+    box-sizing: border-box;
 }
 
 select:hover,
@@ -74,13 +79,6 @@ input[type="file"]::-webkit-file-upload-button {
 input[type="file"]::-webkit-file-upload-button:hover {
     background: #4450e6;
 }
-
-
-
-
-
-
-
 
 /* Force dark dropdown background */
 select {
@@ -106,14 +104,6 @@ select option:hover {
     color: #fff !important;
 }
 
-
-
-
-
-
-
-
-
 /* ------------------------------
    BUTTON
 ------------------------------ */
@@ -130,6 +120,7 @@ button {
     color: white;
     box-shadow: 0 6px 15px rgba(88, 100, 255, 0.35);
     transition: 0.25s ease;
+    box-sizing: border-box;
 }
 
 button:hover {
@@ -150,13 +141,9 @@ button:active {
     to { opacity: 1; transform: translateY(0); }
 }
 
-
-
-
-
-
-
-/* Popup Background */
+/* ------------------------------
+   POPUP (Responsive tweaks)
+------------------------------ */
 .popup-container {
     display: none; /* keep hidden initially */
     position: fixed;
@@ -170,19 +157,23 @@ button:active {
     align-items: center;
     animation: fadeIn 0.4s ease;
     z-index: 9999;
+    padding: 15px; /* add padding on mobile */
+    box-sizing: border-box;
 }
 
-/* Popup Box */
 .popup-box {
     background: #ffffff;
     padding: 30px;
     border-radius: 15px;
-    width: 350px;
+    width: 100%;
+    max-width: 350px;
     text-align: center;
     box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
     animation: popupScale 0.4s ease;
+    box-sizing: border-box;
 }
 
+/* Responsive typography */
 .popup-box h2 {
     margin: 0;
     font-size: 22px;
@@ -211,80 +202,35 @@ button:active {
     background: #2980b9;
 }
 
-/* Fade animation */
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-@keyframes popupScale {
-    0% { transform: scale(0.7); opacity: 0; }
-    100% { transform: scale(1); opacity: 1; }
-}
-
-/* Confetti Animation */
-.confetti {
-    position: absolute;
-    top: -10px;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    background:
-        radial-gradient(circle, #ff4757 6px, transparent 7px),
-        radial-gradient(circle, #1e90ff 6px, transparent 7px),
-        radial-gradient(circle, #2ed573 6px, transparent 7px),
-        radial-gradient(circle, #ffa502 6px, transparent 7px);
-    background-size: 20px 20px;
-    animation: confettiFall 1.5s linear infinite;
-}
-
-@keyframes confettiFall {
-    from { background-position: 0 -200px; }
-    to { background-position: 0 300px; }
-}
-
-
 /* ------------------------------
-   MOBILE RESPONSIVENESS FIX
+   MEDIA QUERIES FOR MOBILE
 ------------------------------ */
-@media (max-width: 480px) {
-
-    /* Main Card */
+@media only screen and (max-width: 480px) {
+    body {
+        padding: 15px;
+        align-items: flex-start;
+        min-height: auto;
+    }
     .container {
-        width: 90%;
         padding: 25px 20px;
-    }
-
-    /* Popup */
-    .popup-box {
-        width: 85% !important;
-        padding: 25px !important;
-    }
-
-    .popup-box h2 {
-        font-size: 20px;
-    }
-
-    .popup-box p {
-        font-size: 14px;
-    }
-
-    .close-btn {
+        max-width: 100%;
         width: 100%;
-        padding: 12px;
-        font-size: 15px;
+        border-radius: 12px;
     }
-
-    /* Ensure dropdown and file input scale well */
+    h3 {
+        font-size: 22px;
+    }
     select,
     input[type="file"] {
         font-size: 13px;
         padding: 10px;
     }
-
-    /* Button */
     button {
-        padding: 12px;
         font-size: 14px;
+        padding: 12px;
+    }
+    .popup-box {
+        padding: 20px;
+        max-width: 90%;
     }
 }
